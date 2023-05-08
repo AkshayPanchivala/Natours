@@ -64,6 +64,9 @@ if(req.query.page){
 
 });
 
+
+
+
 exports.getTour = catchAsync(async (req, res,next) => {
 
     const tours=await Tour.findById(req.params.id);
@@ -79,6 +82,10 @@ exports.getTour = catchAsync(async (req, res,next) => {
 
   });
 
+
+
+
+
 exports.createTour = catchAsync(async (req, res,next) => {
   const newTour= await Tour.create(req.body);
   res.status(201).json({
@@ -88,6 +95,9 @@ exports.createTour = catchAsync(async (req, res,next) => {
     }
   })
 });
+
+
+
 
 
 
@@ -112,6 +122,9 @@ exports.updateTour = catchAsync(async (req, res,next) => {
 
 
 
+
+
+
 exports.deleteTour = catchAsync(async (req, res,next) => {
  
     const tour=await Tour.findByIdAndRemove(req.params.id);
@@ -124,6 +137,9 @@ exports.deleteTour = catchAsync(async (req, res,next) => {
     });
   }
 );
+
+
+
 
 
 exports.getTourStats=catchAsync(async (req,res,next) =>{
@@ -153,6 +169,9 @@ exports.getTourStats=catchAsync(async (req,res,next) =>{
     });
   
 });
+
+
+
 
 exports.getMonthlyplan=catchAsync(async(req,res,next)=>{
 
