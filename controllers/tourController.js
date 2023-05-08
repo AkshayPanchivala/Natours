@@ -6,7 +6,8 @@ const AppError = require('../utills/appError');
 
 
 
-
+////////////////////////////////////////////////////////
+//get all tours
 exports.getAllTours = catchAsync (async (req, res,next) => {
  
  
@@ -67,6 +68,9 @@ if(req.query.page){
 
 
 
+///////////////////////////////////////////////////////////////////////
+///get tour
+
 exports.getTour = catchAsync(async (req, res,next) => {
 
     const tours=await Tour.findById(req.params.id);
@@ -84,7 +88,8 @@ exports.getTour = catchAsync(async (req, res,next) => {
 
 
 
-
+/////////////////////////////////////////////////////////////////
+////create tour
 
 exports.createTour = catchAsync(async (req, res,next) => {
   const newTour= await Tour.create(req.body);
@@ -99,7 +104,8 @@ exports.createTour = catchAsync(async (req, res,next) => {
 
 
 
-
+////////////////////////////////////////////////////
+//update tour
 
 exports.updateTour = catchAsync(async (req, res,next) => {
 
@@ -121,7 +127,8 @@ exports.updateTour = catchAsync(async (req, res,next) => {
 
 
 
-
+///////////////////////////////////////////////////
+////delete tour
 
 
 
@@ -141,7 +148,8 @@ exports.deleteTour = catchAsync(async (req, res,next) => {
 
 
 
-
+////////////////////////////////////////////////////
+//get tourstats
 exports.getTourStats=catchAsync(async (req,res,next) =>{
 
     const stats=await Tour.aggregate([
@@ -170,7 +178,8 @@ exports.getTourStats=catchAsync(async (req,res,next) =>{
   
 });
 
-
+//////////////////////////////////////////////////////////////////
+//get monthly plan
 
 
 exports.getMonthlyplan=catchAsync(async(req,res,next)=>{

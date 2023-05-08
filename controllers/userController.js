@@ -2,6 +2,9 @@ const User = require('../models/usermodel');
 const AppError = require('../utills/appError');
 const catchAsync = require('./../utills/catchasync');
 
+
+/////////////////////////////////////////////////////////////////////
+// get All user
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await User.find(req.params.id);
 
@@ -14,6 +17,10 @@ exports.getAllUsers = catchAsync(async (req, res, next) => {
   });
 });
 
+
+
+////////////////////////////////////////////////////////////////////////
+///get user by id
 exports.getUser = catchAsync(async (req, res, next) => {
   const users = await User.findById(req.params.id);
 
@@ -26,6 +33,12 @@ exports.getUser = catchAsync(async (req, res, next) => {
   });
 });
 
+
+
+
+//////////////////////////////////////////////////////////////////////////
+//create user
+
 exports.createUser = (req, res) => {
   res.status(500).json({
     status: 'error',
@@ -33,6 +46,10 @@ exports.createUser = (req, res) => {
   });
 };
 
+
+
+/////////////////////////////////////////////////////////////////
+//update user
 exports.updateUser = catchAsync(async (req, res, next) => {
   const users = await User.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -49,6 +66,10 @@ exports.updateUser = catchAsync(async (req, res, next) => {
   });
 });
 
+
+
+//////////////////////////////////////////////////////////////
+///deleteme
 exports.deleteme = catchAsync(async (req, res, next) => {
   const user = await User.findByIdAndUpdate(req.user.id, { active: false });
   res.status(204).json({
@@ -57,6 +78,11 @@ exports.deleteme = catchAsync(async (req, res, next) => {
   });
 });
 
+
+
+
+////////////////////////////////////////////////////////////
+///delete user
 exports.deleteUser = catchAsync(async (req, res, next) => {
   const users = await User.findByIdAndRemove(req.params.id);
   if (!users) {
@@ -68,6 +94,10 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
   });
 });
 
+
+
+//////////////////////////////////////////////////////////
+//update me
 exports.updateMe = catchAsync(async (req, res, next) => {
   if (req.body.password || req.body.confirmpassword) {
     return next(new AppError('This route is not for password updates'));
